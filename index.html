@@ -32,13 +32,12 @@
   /* Bloco bônus — cinza, label azul, status como texto simples */
   .bonus-block { background: #ebebeb; border-radius: 10px; padding: 12px 14px; margin-top: 10px; }
   .bonus-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-  .bonus-label { background: #dbeafe; color: #1e40af; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
-  .bonus-status { font-size: 14px; color: #333; }
-  .retry-btn { background: none; border: 1px solid #991b1b; border-radius: 999px; padding: 3px 10px; font-size: 11px; cursor: pointer; color: #991b1b; margin-left: 8px; }
+  .bonus-title { font-size: 12px; font-weight: 600; color: #555; margin-bottom: 10px; }
+  .bonus-status { font-size: 14px; color: #333; white-space: nowrap; }
+  .retry-btn { background: none; border: 1px solid #991b1b; border-radius: 999px; padding: 3px 10px; font-size: 11px; cursor: pointer; color: #991b1b; margin-left: 8px; white-space: nowrap; }
   .retry-btn:hover { background: #fee2e2; }
-
-  .add-btn { display: flex; align-items: center; gap: 6px; background: none; border: 1.5px dashed #93c5fd; border-radius: 10px; padding: 8px 14px; font-size: 13px; color: #2563eb; cursor: pointer; width: 100%; margin-top: 10px; }
-  .add-btn:hover { background: #eff6ff; border-color: #2563eb; }
+  .add-btn { background: none; border: none; padding: 0; font-size: 13px; color: #111; cursor: pointer; margin-top: 12px; text-decoration: underline; display: inline-flex; align-items: center; gap: 4px; }
+  .add-btn:hover { color: #555; }
 
   /* Modo edição */
   .edit-card { background: #f4f4f4; border-radius: 12px; padding: 16px 20px; margin-bottom: 14px; border: 1.5px solid #2563eb; }
@@ -57,9 +56,11 @@
   .btn-save { background: #f72585; border: none; border-radius: 999px; padding: 10px 26px; font-size: 14px; cursor: pointer; color: white; font-weight: 600; }
   .btn-save:hover { background: #d91a70; }
 
+  .bonus-block .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; overflow: hidden; }
+  .bonus-block .field-value { word-break: break-all; }
   .bonus-form-block { background: #ebebeb; border-radius: 10px; padding: 14px 16px; margin-top: 10px; }
   .bonus-form-header { margin-bottom: 12px; }
-  .status-row { display: flex; align-items: center; flex-wrap: nowrap; white-space: nowrap; }
+  .status-row { display: flex; align-items: center; flex-wrap: nowrap; overflow: hidden; }
 </style>
 </head>
 <body>
@@ -89,9 +90,7 @@
     </div>
     <hr class="divider">
     <div class="bonus-block">
-      <div class="bonus-header">
-        <span class="bonus-label">Bônus</span>
-      </div>
+      <h3 class="bonus-title">Bônus</h3>
       <div class="field-grid">
         <div>
           <p class="field-label">Valor</p>
@@ -147,19 +146,17 @@
     </div>
     <hr class="divider">
     <div class="bonus-block">
-      <div class="bonus-header">
-        <span class="bonus-label">Bônus</span>
-      </div>
-      <div class="field-grid">
+      <h3 class="bonus-title">Bônus</h3>
+      <div class="bonus-block .field-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:14px; overflow:hidden;">
         <div>
           <p class="field-label">Valor</p>
           <p class="field-value">R$ 500,00</p>
         </div>
         <div>
           <p class="field-label">Chave Pix</p>
-          <p class="field-value">123.456.789-00</p>
+          <p class="field-value" style="word-break:break-all;">123.456.789-00</p>
         </div>
-        <div>
+        <div style="grid-column: 1 / -1;">
           <p class="field-label">Status</p>
           <div class="status-row">
             <p class="bonus-status">Erro no pagamento</p>
@@ -196,9 +193,7 @@
     </div>
     <hr class="divider">
     <div class="bonus-form-block">
-      <div class="bonus-form-header">
-        <span class="bonus-label">Bônus</span>
-      </div>
+      <h3 class="bonus-title">Bônus</h3>
       <div class="form-row">
         <div>
           <label class="form-label">Valor do bônus *</label>
